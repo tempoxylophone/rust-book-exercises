@@ -12,14 +12,32 @@
 ///
 /// Run `cargo test collatz_recursive_test` to check your answer.
 pub fn collatz_recursive(n: usize) -> usize {
-  unimplemented!()
+  if n == 1{
+	return 0
+  } else if n % 2 == 0{
+	return 1 + collatz_recursive(n/2);	
+  } else {
+	return 1 + collatz_recursive(3 * n + 1);
+  }
 }
 
 /// Problem 1b: write an **ITERATIVE** function that computes the value of i for a given n.
 ///
 /// Run `cargo test collatz_iterative_test` to check your answer.
 pub fn collatz_iterative(n: usize) -> usize {
-  unimplemented!()
+  let mut counter = 0;
+  let mut curr_n = n;
+  return loop {
+    if curr_n == 1{
+	break counter;
+    } else if curr_n % 2 == 0{
+	curr_n = curr_n / 2;
+	counter += 1;
+    } else {
+	curr_n = 3 * curr_n + 1;
+	counter += 1;
+    } 
+  };
 }
 
 #[cfg(test)]
